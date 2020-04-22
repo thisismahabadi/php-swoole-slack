@@ -2,11 +2,21 @@
 
 require '../BaseModel.php';
 
+/**
+ * @author @thisismahabadi
+ */
 class DeleteMessage extends BaseModel implements BaseInterface
 {
+	/**
+     * The Slack api url for deleting chat.
+     *
+     * @var string
+     */
 	public $url = 'https://slack.com/api/chat.delete?';
 
-	public function response($params = null) {
+    /** @inheritdoc */
+	public function response($params = null)
+	{
 		$data = '&channel=' . $params['channel'];
 		$data .= '&ts=' . $params['ts'];
 
@@ -14,7 +24,8 @@ class DeleteMessage extends BaseModel implements BaseInterface
 	}
 }
 
-function deleteMessage() {
+function deleteMessage()
+{
 	$message = (new DeleteMessage)->response($_GET);
 
 	print_r($message);

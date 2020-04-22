@@ -2,11 +2,21 @@
 
 require '../BaseModel.php';
 
+/**
+ * @author @thisismahabadi
+ */
 class ReplyMessage extends BaseModel implements BaseInterface
 {
+	/**
+     * The Slack api url for replying to chat messages.
+     *
+     * @var string
+     */
 	public $url = 'https://slack.com/api/chat.postMessage?';
 
-	public function response($params = null) {
+    /** @inheritdoc */
+	public function response($params = null)
+	{
 		$data = '&channel=' . $params['channel'];
 		$data .= '&text=' . $params['text'];
 		$data .= '&thread_ts=' . $params['thread'];
@@ -15,7 +25,8 @@ class ReplyMessage extends BaseModel implements BaseInterface
 	}
 }
 
-function replyMessage() {
+function replyMessage()
+{
 	$message = (new ReplyMessage)->response($_POST);
 
 	print_r($message);

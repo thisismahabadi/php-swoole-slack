@@ -2,11 +2,28 @@
 
 require 'BaseInterface.php';
 
+/**
+ * @author @thisismahabadi
+ */
 class BaseModel
 {
-	public $token = 'token=xoxp-1082401724580-1069499576150-1065376764567-68789de9a798668fe16628959339378a';
+	/**
+     * The Slack api token.
+     *
+     * @var string
+     */
+	public $token = 'token=xoxp-1082401724580-1069499576150-1080124911394-4486284ded5ead02ab8b5250cdb61377';
 
-	public function fetchData($url, $params = null) {
+    /**
+     * Make a cURL request to Slack api.
+     *
+     * @param string $url
+     * @param array|string|null $params
+     *
+     * @return object
+     */
+	public function fetchData($url, $params = null)
+	{
 		$cURLConnection = curl_init();
 
 		curl_setopt($cURLConnection, CURLOPT_URL, $url . $this->token . $params);

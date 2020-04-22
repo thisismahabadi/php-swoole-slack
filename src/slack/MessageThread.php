@@ -2,11 +2,21 @@
 
 require '../BaseModel.php';
 
+/**
+ * @author @thisismahabadi
+ */
 class MessageThread extends BaseModel implements BaseInterface
 {
+	/**
+     * The Slack api url for getting channels replies.
+     *
+     * @var string
+     */
 	public $url = 'https://slack.com/api/channels.replies?';
 
-	public function response($params = null) {
+    /** @inheritdoc */
+	public function response($params = null)
+	{
 		$data = '&channel=' . $params['channel'];
 		$data .= '&thread_ts=' . $params['thread'];
 
@@ -14,7 +24,8 @@ class MessageThread extends BaseModel implements BaseInterface
 	}
 }
 
-function getThread() {
+function getThread()
+{
 	return (new MessageThread)->response($_GET);
 }
 

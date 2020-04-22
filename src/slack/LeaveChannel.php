@@ -2,18 +2,29 @@
 
 require '../BaseModel.php';
 
+/**
+ * @author @thisismahabadi
+ */
 class LeaveChannel extends BaseModel implements BaseInterface
 {
+	/**
+     * The Slack api url for leaving channels.
+     *
+     * @var string
+     */
 	public $url = 'https://slack.com/api/channels.leave?';
 
-	public function response($params = null) {
+    /** @inheritdoc */
+	public function response($params = null)
+	{
 		$params = '&channel=' . $params;
 
 		return $this->fetchData($this->url, $params);
 	}
 }
 
-function leaveChannel() {
+function leaveChannel()
+{
 	$channelInfo = (new LeaveChannel)->response($_GET['channel']);
 
 	print_r($channelInfo);
