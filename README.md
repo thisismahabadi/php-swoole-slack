@@ -18,7 +18,10 @@ Make sure that you've already installed swoole. you can use [this link](https://
 - Leaving a channel
 
 ### It also looks like this:
+
+- Channels List
 ![Channels List](/doc/images/channels-list.png)
+- Channel Messages
 ![Channel Messages](/doc/images/channel-messages.png)
 
 ## Contributing
