@@ -12,7 +12,7 @@ class ChannelsList extends BaseModel implements BaseInterface
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.list1?';
+	public $url = 'https://slack.com/api/channels.list?';
 
     /** @inheritdoc */
 	public function response($params = null): ?array
