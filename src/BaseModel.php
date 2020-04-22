@@ -4,7 +4,7 @@ require 'BaseInterface.php';
 
 class BaseModel
 {
-	public $token = 'token=xoxp-1082401724580-1069499576150-1090406197793-9c04c1bd08244cf003b2c3ac1a0254cc';
+	public $token = 'token=xoxp-1082401724580-1069499576150-1065376764567-68789de9a798668fe16628959339378a';
 
 	public function fetchData($url, $params = null) {
 		$cURLConnection = curl_init();

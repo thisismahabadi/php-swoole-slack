@@ -29,7 +29,7 @@ function getMessages() {
 
 	<div class="container">
 		<div class="row">
-			<a href="channels-list.php">&#8592; Back</a>
+			<a href="ChannelsList.php">&#8592; Back</a>
 		</div>
 	</div>
 
@@ -51,8 +51,8 @@ function getMessages() {
 						<tr>
 							<td><?= $key->user ?></td>
 							<td><?= $key->text ?></td>
-							<td><?= '<a class="btn btn-danger" href="delete-message.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
-		                    <td><?= '<a class="btn btn-primary" href="message-thread.php?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>
+							<td><?= '<a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
+		                    <td><?= '<a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>
@@ -63,7 +63,7 @@ function getMessages() {
 	<hr />
 
 	<div class="container">
-		<form method="post" action="send-message.php">
+		<form method="post" action="SendMessage.php">
 			<div class="row">
 				<div class="col-11">
 					<input class="form-control" type="text" name="text" placeholder="Type your message...">

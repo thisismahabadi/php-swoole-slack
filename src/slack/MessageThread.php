@@ -30,7 +30,7 @@ function getThread() {
 
     <div class="container">
         <div class="row">
-            <a href="channel-messages.php?channel=<?= $_GET['channel'] ?>">&#8592; Back</a>
+            <a href="ChannelMessages.php?channel=<?= $_GET['channel'] ?>">&#8592; Back</a>
         </div>
     </div>
 
@@ -51,7 +51,7 @@ function getThread() {
                         <tr>
                             <td><?= $key->user ?></td>
                             <td><?= $key->text ?></td>
-                            <td><?= '<a class="btn btn-danger" href="delete-message.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
+                            <td><?= '<a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -62,7 +62,7 @@ function getThread() {
 	<hr />
 
 	<div class="container">
-		<form method="post" action="reply-message.php">
+		<form method="post" action="ReplyMessage.php">
 			<div class="row">
 				<div class="col-10">
 					<input class="form-control" type="text" name="text" placeholder="Type your message...">

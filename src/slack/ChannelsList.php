@@ -39,10 +39,10 @@ function getList() {
 			<?php foreach(getList() as $key) { ?>
 				<tr>
 					<td><?= $key->name ?></td>
-					<td><?= '<a class="btn btn-primary" href="channel-info.php?channel=' . $key->id . '">Click to visit channel\'s info.</a>' ?></td>
-					<td><?= '<a class="btn btn-danger" href="leave-channel.php?channel=' . $key->id . '">Click to leave this channel.</a>' ?></td>
-					<td><?= '<a class="btn btn-success" href="join-channel.php?channelName=' . $key->name . '">Click to join this channel.</a>' ?></td>
-					<td><?= '<a class="btn btn-info" href="channel-messages.php?channel=' . $key->id . '">Click here to manage messages in the channel.</a>' ?></td>
+					<td><?= '<a class="btn btn-primary" target="_blank" href="ChannelInfo.php?channel=' . $key->id . '">Click to visit channel\'s info.</a>' ?></td>
+					<td><?= '<a class="btn btn-danger" target="_blank" href="LeaveChannel.php?channel=' . $key->id . '">Click to leave this channel.</a>' ?></td>
+					<td><?= '<a class="btn btn-success" target="_blank" href="JoinChannel.php?channelName=' . $key->name . '">Click to join this channel.</a>' ?></td>
+					<td><?= '<a class="btn btn-info" target="_blank" href="ChannelMessages.php?channel=' . $key->id . '">Click here to manage messages in the channel.</a>' ?></td>
 				</tr>
 			<?php } ?>
 		</tbody>
