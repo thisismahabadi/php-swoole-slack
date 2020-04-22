@@ -12,7 +12,7 @@ class BaseModel
      *
      * @var string
      */
-	public $token = 'token=xoxp-1082401724580-1069499576150-1086458349908-cda68b21d23e27cbabc466b71498904a';
+	public $token = 'xoxp-1082401724580-1069499576150-1078926410949-d1a1d546afdaf780f647941a23cb90e7';
 
     /**
      * Make a cURL request to Slack api.
@@ -26,7 +26,7 @@ class BaseModel
 	{
 		$cURLConnection = curl_init();
 
-		curl_setopt($cURLConnection, CURLOPT_URL, $url . $this->token . $params);
+		curl_setopt($cURLConnection, CURLOPT_URL, $url . 'token=' . $this->token . $params);
 		curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
 
 		$data = curl_exec($cURLConnection);

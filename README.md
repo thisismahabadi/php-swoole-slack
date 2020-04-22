@@ -6,6 +6,10 @@ This is a simple application to interact with Slack which is written in PHP and 
 
 Make sure that you've already installed swoole. you can use [this link](https://www.swoole.co.uk/) to do it.
 
+## Usage
+
+In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src` folder.
+
 ## Provided Features
 
 - Tokens and Authentication
