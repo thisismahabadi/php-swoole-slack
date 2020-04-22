@@ -20,9 +20,9 @@ class BaseModel
      * @param string $url
      * @param array|string|null $params
      *
-     * @return object
+     * @return null|object
      */
-	public function fetchData($url, $params = null): object
+	public function fetchData($url, $params = null): ?object
 	{
 		$cURLConnection = curl_init();
 

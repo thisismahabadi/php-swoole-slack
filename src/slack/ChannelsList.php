@@ -12,16 +12,16 @@ class ChannelsList extends BaseModel implements BaseInterface
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.list?';
+	public $url = 'https://slack.com/api/channels.list1?';
 
     /** @inheritdoc */
-	public function response($params = null): array
+	public function response($params = null): ?array
 	{
 		return $this->fetchData($this->url)->channels;
 	}
 }
 
-function getList(): array
+function getList(): ?array
 {
 	return (new ChannelsList)->response();
 }

@@ -15,7 +15,7 @@ class ChannelMessages extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/conversations.history?';
 
     /** @inheritdoc */
-	public function response($params = null): array
+	public function response($params = null): ?array
 	{
 		$params = '&channel=' . $params;
 
@@ -23,7 +23,7 @@ class ChannelMessages extends BaseModel implements BaseInterface
 	}
 }
 
-function getMessages(): array
+function getMessages(): ?array
 {
 	return (new ChannelMessages)->response($_GET['channel']);
 }

@@ -15,7 +15,7 @@ class LeaveChannel extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/channels.leave?';
 
     /** @inheritdoc */
-	public function response($params = null): object
+	public function response($params = null): ?object
 	{
 		$params = '&channel=' . $params;
 
