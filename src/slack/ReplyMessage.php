@@ -15,7 +15,7 @@ class ReplyMessage extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/chat.postMessage?';
 
     /** @inheritdoc */
-	public function response($params = null)
+	public function response($params = null): object
 	{
 		$data = '&channel=' . $params['channel'];
 		$data .= '&text=' . $params['text'];

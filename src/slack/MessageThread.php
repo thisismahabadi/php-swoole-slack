@@ -15,7 +15,7 @@ class MessageThread extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/channels.replies?';
 
     /** @inheritdoc */
-	public function response($params = null)
+	public function response($params = null): array
 	{
 		$data = '&channel=' . $params['channel'];
 		$data .= '&thread_ts=' . $params['thread'];
@@ -24,7 +24,7 @@ class MessageThread extends BaseModel implements BaseInterface
 	}
 }
 
-function getThread()
+function getThread(): array
 {
 	return (new MessageThread)->response($_GET);
 }

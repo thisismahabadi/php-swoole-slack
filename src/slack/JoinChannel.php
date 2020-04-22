@@ -15,7 +15,7 @@ class JoinChannel extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/channels.join?';
 
     /** @inheritdoc */
-	public function response($params = null)
+	public function response($params = null): object
 	{
 		$params = '&name=' . $params;
 

@@ -15,7 +15,7 @@ class DeleteMessage extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/chat.delete?';
 
     /** @inheritdoc */
-	public function response($params = null)
+	public function response($params = null): object
 	{
 		$data = '&channel=' . $params['channel'];
 		$data .= '&ts=' . $params['ts'];

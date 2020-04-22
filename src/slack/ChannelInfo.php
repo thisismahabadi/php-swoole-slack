@@ -15,7 +15,7 @@ class ChannelInfo extends BaseModel implements BaseInterface
 	public $url = 'https://slack.com/api/channels.info?';
 
     /** @inheritdoc */
-	public function response($params = null)
+	public function response($params = null): object
 	{
 		$params = '&channel=' . $params;
 
