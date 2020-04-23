@@ -31,8 +31,7 @@ function joinChannel()
 {
 	try {
 		$channelInfo = (new JoinChannel)->response($_GET['channelName']);
-
-		print_r($channelInfo);
+		die(json_encode($channelInfo));
 	} catch (Exception $e) {
 		echo $e->getMessage(); die;
 	}

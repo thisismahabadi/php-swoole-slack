@@ -31,8 +31,7 @@ function leaveChannel()
 {
 	try {
 		$channelInfo = (new LeaveChannel)->response($_GET['channel']);
-
-		print_r($channelInfo);
+		die(json_encode($channelInfo));
 	} catch (Exception $e) {
 		echo $e->getMessage(); die;
 	}

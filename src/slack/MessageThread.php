@@ -44,6 +44,7 @@ function getThread(): ?array
 <head>
     <title>Replying Message</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
 
@@ -81,19 +82,66 @@ function getThread(): ?array
 	<hr />
 
 	<div class="container">
-		<form method="post" action="ReplyMessage.php">
+		<form>
 			<div class="row">
 				<div class="col-10">
-					<input class="form-control" type="text" name="text" placeholder="Type your reply...">
-					<input type="hidden" name="channel" value="<?= $_GET['channel'] ?>">
-					<input type="hidden" name="thread" value="<?= $_GET['thread'] ?>">
+					<input class="form-control" type="text" id="text" name="text" placeholder="Type your reply...">
 				</div>
 				<div class="col-2">
-					<button class="btn btn-success">Send Reply</button>
+					<button class="btn btn-success" id="replyMessage">Send Reply</button>
 				</div>
 			</div>
 		</form>
 	</div>
+
+	<br />
+
+	<script>
+		ws = new WebSocket('ws:127.0.0.1:9503');
+
+		ws.onopen = function() {
+			console.log('User has been connected.');
+		}
+
+		ws.onmessage = function(event) {
+			console.log('There is a new reply.');
+			$('tbody').append(
+				`<tr>
+					<td>${JSON.parse(event.data).message.user ?? ''}</td>
+					<td>${JSON.parse(event.data).message.text}</td>
+					<td><a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=${JSON.parse(event.data).channel}&ts=${JSON.parse(event.data).ts}">Remove this message.</a></td>
+				</tr>`
+			);
+		}
+
+		ws.onclose = function(event) {
+			console.log('User has been disconnected.');
+		}
+
+		$('#replyMessage').click(function(e) {
+			e.preventDefault();
+            $.ajax({
+                url: 'ReplyMessage.php',
+                data: {
+					channel: '<?= $_GET['channel'] ?>',
+					text: $('#text').val(),
+                    thread: '<?= $_GET['thread'] ?>'
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(result) {
+					ws.send(JSON.stringify(result));
+                },
+                error: function(result) {
+					if (result.responseText) {
+						alert(result.responseText);
+					}
+
+					console.log(result);
+                }
+            });
+		});
+	</script>
 
 </body>
 </html>

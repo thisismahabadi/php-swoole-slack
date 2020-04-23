@@ -18,6 +18,10 @@ class SendMessage extends BaseModel implements BaseInterface
 	public function response($params = null): ?object
 	{
 		try {
+			if (! $params['text'] || ! $params['channel']) {
+				throw new Exception('Send both text and channel as parameters.');
+			}
+
 			$data = '&channel=' . $params['channel'];
 			$data .= '&text=' . $params['text'];
 
@@ -32,8 +36,7 @@ function sendMessage()
 {
 	try {
 		$message = (new SendMessage)->response($_POST);
-
-		print_r($message);
+		die(json_encode($message));
 	} catch (Exception $e) {
 		echo $e->getMessage(); die;
 	}

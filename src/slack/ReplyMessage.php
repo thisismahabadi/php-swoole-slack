@@ -18,6 +18,10 @@ class ReplyMessage extends BaseModel implements BaseInterface
 	public function response($params = null): ?object
 	{
 		try {
+			if (! $params['channel'] || ! $params['text'] || ! $params['thread']) {
+				throw new Exception('Send all text, channel and thread as parameters.');
+			}
+
 			$data = '&channel=' . $params['channel'];
 			$data .= '&text=' . $params['text'];
 			$data .= '&thread_ts=' . $params['thread'];
@@ -33,8 +37,7 @@ function replyMessage()
 {
 	try {
 		$message = (new ReplyMessage)->response($_POST);
-
-		print_r($message);
+		die(json_encode($message));
 	} catch (Exception $e) {
 		echo $e->getMessage(); die;
 	}

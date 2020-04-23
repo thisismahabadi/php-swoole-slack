@@ -32,8 +32,7 @@ function deleteMessage()
 {
 	try {
 		$message = (new DeleteMessage)->response($_GET);
-
-		print_r($message);
+		die(json_encode($message));
 	} catch (Exception $e) {
 		echo $e->getMessage(); die;
 	}

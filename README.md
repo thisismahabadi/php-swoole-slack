@@ -2,6 +2,10 @@
 
 This is a simple application to interact with Slack which is written in PHP and using Swoole framework.
 
+## Please Note
+
+Make sure that you've already installed swoole. you can use [this link](https://www.swoole.co.uk/) to do it.
+
 ## Usage
 
 In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src` folder.
@@ -13,6 +17,13 @@ php -S localhost:8000
 ```
 
 or any ports you would like.
+
+and to use a real-time sending and replying to messages, try to open their sockets with these commands from root folder:
+
+```bash
+php src/sockets/SendMessage.php
+php src/sockets/ReplyMessage.php
+```
 
 ## Provided Features
 
