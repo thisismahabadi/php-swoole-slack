@@ -6,6 +6,14 @@ This is a simple application to interact with Slack which is written in PHP and 
 
 In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src` folder.
 
+and then you can run it in root folder by php built-in web server like this:
+
+```bash
+php -S localhost:8000
+```
+
+or any ports you would like.
+
 ## Provided Features
 
 - Tokens and Authentication
