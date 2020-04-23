@@ -17,18 +17,26 @@ class SendMessage extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?object
 	{
-		$data = '&channel=' . $params['channel'];
-		$data .= '&text=' . $params['text'];
+		try {
+			$data = '&channel=' . $params['channel'];
+			$data .= '&text=' . $params['text'];
 
-		return $this->fetchData($this->url, $data);
+			return $this->fetchData($this->url, $data);
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function sendMessage()
 {
-	$message = (new SendMessage)->response($_POST);
+	try {
+		$message = (new SendMessage)->response($_POST);
 
-	print_r($message);
+		print_r($message);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 sendMessage();

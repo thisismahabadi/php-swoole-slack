@@ -17,19 +17,27 @@ class ReplyMessage extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?object
 	{
-		$data = '&channel=' . $params['channel'];
-		$data .= '&text=' . $params['text'];
-		$data .= '&thread_ts=' . $params['thread'];
+		try {
+			$data = '&channel=' . $params['channel'];
+			$data .= '&text=' . $params['text'];
+			$data .= '&thread_ts=' . $params['thread'];
 
-		return $this->fetchData($this->url, $data);
+			return $this->fetchData($this->url, $data);
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function replyMessage()
 {
-	$message = (new ReplyMessage)->response($_POST);
+	try {
+		$message = (new ReplyMessage)->response($_POST);
 
-	print_r($message);
+		print_r($message);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 replyMessage();

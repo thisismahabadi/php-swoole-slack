@@ -17,17 +17,25 @@ class JoinChannel extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?object
 	{
-		$params = '&name=' . $params;
+		try {
+			$params = '&name=' . $params;
 
-		return $this->fetchData($this->url, $params);
+			return $this->fetchData($this->url, $params);
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function joinChannel()
 {
-	$channelInfo = (new JoinChannel)->response($_GET['channelName']);
+	try {
+		$channelInfo = (new JoinChannel)->response($_GET['channelName']);
 
-	print_r($channelInfo);
+		print_r($channelInfo);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 joinChannel();

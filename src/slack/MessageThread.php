@@ -17,16 +17,24 @@ class MessageThread extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?array
 	{
-		$data = '&channel=' . $params['channel'];
-		$data .= '&thread_ts=' . $params['thread'];
+		try {
+			$data = '&channel=' . $params['channel'];
+			$data .= '&thread_ts=' . $params['thread'];
 
-		return $this->fetchData($this->url, $data)->messages;
+			return $this->fetchData($this->url, $data)->messages;
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function getThread(): ?array
 {
-	return (new MessageThread)->response($_GET);
+	try {
+		return (new MessageThread)->response($_GET);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 ?>
@@ -60,7 +68,7 @@ function getThread(): ?array
                 <tbody>
                     <?php foreach(getThread() as $key) { ?>
                         <tr>
-                            <td><?= $key->user ?></td>
+                            <td><?= $key->user ?? null ?></td>
                             <td><?= $key->text ?></td>
                             <td><?= '<a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
                         </tr>
@@ -76,7 +84,7 @@ function getThread(): ?array
 		<form method="post" action="ReplyMessage.php">
 			<div class="row">
 				<div class="col-10">
-					<input class="form-control" type="text" name="text" placeholder="Type your message...">
+					<input class="form-control" type="text" name="text" placeholder="Type your reply...">
 					<input type="hidden" name="channel" value="<?= $_GET['channel'] ?>">
 					<input type="hidden" name="thread" value="<?= $_GET['thread'] ?>">
 				</div>

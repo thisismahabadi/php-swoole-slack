@@ -17,18 +17,26 @@ class DeleteMessage extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?object
 	{
-		$data = '&channel=' . $params['channel'];
-		$data .= '&ts=' . $params['ts'];
+		try {
+			$data = '&channel=' . $params['channel'];
+			$data .= '&ts=' . $params['ts'];
 
-		return $this->fetchData($this->url, $data);
+			return $this->fetchData($this->url, $data);
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function deleteMessage()
 {
-	$message = (new DeleteMessage)->response($_GET);
+	try {
+		$message = (new DeleteMessage)->response($_GET);
 
-	print_r($message);
+		print_r($message);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 deleteMessage();

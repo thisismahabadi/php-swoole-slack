@@ -17,15 +17,23 @@ class ChannelMessages extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?array
 	{
-		$params = '&channel=' . $params;
+		try {
+			$params = '&channel=' . $params;
 
-		return array_reverse($this->fetchData($this->url, $params)->messages);
+			return array_reverse($this->fetchData($this->url, $params)->messages);
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function getMessages(): ?array
 {
-	return (new ChannelMessages)->response($_GET['channel']);
+	try {
+		return (new ChannelMessages)->response($_GET['channel']);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 ?>
@@ -60,7 +68,7 @@ function getMessages(): ?array
 				<tbody>
 					<?php foreach(getMessages() as $key) { ?>
 						<tr>
-							<td><?= $key->user ?></td>
+							<td><?= $key->user ?? null ?></td>
 							<td><?= $key->text ?></td>
 							<td><?= '<a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
 		                    <td><?= '<a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>

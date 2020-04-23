@@ -17,17 +17,25 @@ class LeaveChannel extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?object
 	{
-		$params = '&channel=' . $params;
+		try {
+			$params = '&channel=' . $params;
 
-		return $this->fetchData($this->url, $params);
+			return $this->fetchData($this->url, $params);
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function leaveChannel()
 {
-	$channelInfo = (new LeaveChannel)->response($_GET['channel']);
+	try {
+		$channelInfo = (new LeaveChannel)->response($_GET['channel']);
 
-	print_r($channelInfo);
+		print_r($channelInfo);
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 leaveChannel();

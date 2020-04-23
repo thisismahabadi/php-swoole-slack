@@ -17,13 +17,21 @@ class ChannelsList extends BaseModel implements BaseInterface
     /** @inheritdoc */
 	public function response($params = null): ?array
 	{
-		return $this->fetchData($this->url)->channels;
+		try {
+			return $this->fetchData($this->url)->channels;
+		} catch (Exception $e) {
+			echo $e->getMessage(); die;
+		}
 	}
 }
 
 function getList(): ?array
 {
-	return (new ChannelsList)->response();
+	try {
+		return (new ChannelsList)->response();
+	} catch (Exception $e) {
+		echo $e->getMessage(); die;
+	}
 }
 
 ?>
