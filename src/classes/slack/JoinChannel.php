@@ -12,7 +12,7 @@ class JoinChannel extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.join?';
+	protected $url = 'https://slack.com/api/channels.join?';
 
     /**
      * Preparing data for making request to Slack api.

@@ -12,7 +12,7 @@ class ReplyMessage extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/chat.postMessage?';
+	protected $url = 'https://slack.com/api/chat.postMessage?';
 
     /**
      * Preparing data for making request to Slack api.

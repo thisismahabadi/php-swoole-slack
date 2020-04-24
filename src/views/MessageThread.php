@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody>
-					<?php foreach(getThread() as $key) { ?>
+					<?php foreach (getThread() as $key) { ?>
                         <tr>
                             <td><?= $key->user ?? $key->username ?></td>
                             <td><?= $key->text ?></td>

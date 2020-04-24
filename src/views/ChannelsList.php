@@ -31,7 +31,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach(getList() as $key) { ?>
+            <?php foreach (getList() as $key) { ?>
                 <tr>
                     <td><?= $key->name ?></td>
                     <td><?= '<a class="btn btn-primary" target="_blank" href="ChannelInfo.php?channel=' . $key->id . '">Click to visit channel\'s info.</a>' ?></td>

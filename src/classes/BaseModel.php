@@ -10,7 +10,7 @@ class BaseModel
      *
      * @var string
      */
-	public $token = 'xoxp-1082401724580-1069499576150-1083642132835-d0a01e27284f78106c9fd18871edcf2e';
+	private $token = 'xoxp-1082401724580-1069499576150-1091859935924-01015000c2edd9b96a64fa0ce7d9b3ff';
 
     /**
      * Make a cURL request to Slack api.
@@ -20,7 +20,7 @@ class BaseModel
      *
      * @return null|object
      */
-	public function fetchData($url, $params = null): ?object
+	protected function fetchData($url, $params = null): ?object
 	{
 		try {
 			$cURLConnection = curl_init();

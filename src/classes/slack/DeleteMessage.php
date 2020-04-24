@@ -12,7 +12,7 @@ class DeleteMessage extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/chat.delete?';
+	protected $url = 'https://slack.com/api/chat.delete?';
 
     /**
      * Preparing data for making request to Slack api.

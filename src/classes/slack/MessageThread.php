@@ -12,7 +12,7 @@ class MessageThread extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.replies?';
+	protected $url = 'https://slack.com/api/channels.replies?';
 
     /**
      * Preparing data for making request to Slack api.

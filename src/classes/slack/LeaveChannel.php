@@ -12,7 +12,7 @@ class LeaveChannel extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.leave?';
+	protected $url = 'https://slack.com/api/channels.leave?';
 
     /**
      * Preparing data for making request to Slack api.

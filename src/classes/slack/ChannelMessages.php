@@ -12,7 +12,7 @@ class ChannelMessages extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/conversations.history?';
+	protected $url = 'https://slack.com/api/conversations.history?';
 
     /**
      * Preparing data for making request to Slack api.
