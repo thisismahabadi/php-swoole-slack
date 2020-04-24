@@ -49,7 +49,7 @@ if you freaked out what is the reason to run these commands, you can also easily
 
 ![Channel Messages](/doc/images/channel-messages.png)
 
-- Real-time messaging
+- Real-Time Messaging
 
 <p align="center">
     <img src="/doc/gifs/real-time-messaging.gif" alt="real-time-messaging" />
