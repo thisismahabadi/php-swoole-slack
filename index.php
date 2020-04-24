@@ -4,6 +4,6 @@
 	<title>Slack</title>
 </head>
 <body>
-	<a href="src/slack/ChannelsList.php">Channels List</a>
+	<a href="src/views/ChannelsList.php">Channels List</a>
 </body>
 </html>

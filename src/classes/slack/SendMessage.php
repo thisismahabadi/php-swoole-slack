@@ -1,6 +1,6 @@
 <?php
 
-require '../BaseModel.php';
+require __DIR__ . '/../BaseModel.php';
 
 /**
  * @author @thisismahabadi
@@ -37,15 +37,3 @@ class SendMessage extends BaseModel
 		}
 	}
 }
-
-function sendMessage()
-{
-	try {
-		$message = (new SendMessage)->response($_POST);
-		die(json_encode($message));
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
-sendMessage();
