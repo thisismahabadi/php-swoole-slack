@@ -143,6 +143,7 @@ function getMessages(): ?array
                 dataType: 'json',
                 success: function(result) {
 					sendWs.send(JSON.stringify(result));
+					$('#text').val(null);
                 },
                 error: function(result) {
 					if (result.responseText) {
