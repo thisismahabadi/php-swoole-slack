@@ -137,7 +137,7 @@ function getMessages(): ?array
                 url: 'SendMessage.php',
                 data: {
 					channel: '<?= $_GET['channel'] ?>',
-					text: $('#text').val()
+					text: encodeURI($('#text').val())
                 },
                 type: 'post',
                 dataType: 'json',

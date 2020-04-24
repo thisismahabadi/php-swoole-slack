@@ -135,7 +135,7 @@ function getThread(): ?array
                 url: 'ReplyMessage.php',
                 data: {
 					channel: '<?= $_GET['channel'] ?>',
-					text: $('#text').val(),
+					text: encodeURI($('#text').val()),
                     thread: '<?= $_GET['thread'] ?>'
                 },
                 type: 'post',
