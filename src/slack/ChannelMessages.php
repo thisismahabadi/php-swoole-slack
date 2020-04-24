@@ -75,7 +75,7 @@ function getMessages(): ?array
 						<tr>
 							<td><?= $key->user ?? $key->username ?></td>
 							<td><?= $key->text ?></td>
-							<td><?= '<a class="btn btn-danger"  target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
+							<td><button class="btn btn-danger deleteMessage" data-ts="<?= $key->ts ?>">Remove this message.</button></td>
 		                    <td><?= '<a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>
 						</tr>
 					<?php } ?>
@@ -102,25 +102,32 @@ function getMessages(): ?array
 	<br />
 
 	<script>
-		ws = new WebSocket('ws:127.0.0.1:9502');
+		sendWs = new WebSocket('ws:127.0.0.1:9502');
+		deleteWs = new WebSocket('ws:127.0.0.1:9504');
 
-		ws.onopen = function() {
+		sendWs.onopen = function() {
 			console.log('User has been connected.');
 		}
 
-		ws.onmessage = function(event) {
+		sendWs.onmessage = function(event) {
 			console.log('There is a new message.');
 			$('tbody').append(
 				`<tr>
 					<td>${JSON.parse(event.data).message.user ?? JSON.parse(event.data).message.username}</td>
 					<td>${JSON.parse(event.data).message.text}</td>
-					<td><a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=${JSON.parse(event.data).channel}&ts=${JSON.parse(event.data).ts}">Remove this message.</a></td>
+					<td><button class="btn btn-danger deleteMessage" data-ts="${JSON.parse(event.data).ts}">Remove this message.</button></td>
 					<td><a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=${JSON.parse(event.data).channel}&thread=${JSON.parse(event.data).ts}">Reply to this message and create or continue thread.</a></td>
 				</tr>`
 			);
 		}
 
-		ws.onclose = function(event) {
+		deleteWs.onmessage = function(event) {
+			console.log('Message has been deleted.');
+			const tr = JSON.parse(event.data).ts;
+			$(`[data-ts='${tr}']`).parent().parent().remove();
+		}
+
+		sendWs.onclose = function(event) {
 			console.log('User has been disconnected.');
 		}
 
@@ -135,7 +142,7 @@ function getMessages(): ?array
                 type: 'post',
                 dataType: 'json',
                 success: function(result) {
-					ws.send(JSON.stringify(result));
+					sendWs.send(JSON.stringify(result));
                 },
                 error: function(result) {
 					if (result.responseText) {
@@ -145,6 +152,28 @@ function getMessages(): ?array
 					console.log(result);
                 }
             });
+		});
+
+		$('tbody').on('click', '.deleteMessage', function(e) {
+			$.ajax({
+				url: 'DeleteMessage.php',
+				data: {
+					channel: '<?= $_GET['channel'] ?>',
+					ts: $(this).data('ts')
+				},
+				type: 'get',
+				dataType: 'json',
+				success: function(result) {
+					deleteWs.send(JSON.stringify(result));
+				},
+				error: function(result) {
+					if (result.responseText) {
+						alert(result.responseText);
+					}
+
+					console.log(result);
+				}
+			});
 		});
 	</script>
 
