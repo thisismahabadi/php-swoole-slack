@@ -52,7 +52,7 @@ if you freaked out what is the reason to run these commands, you can also easily
 - and also a gif that shows how real-time messaging is working
 
 <p align="center">
-    ![Gif](/doc/gifs/real-time-messaging.gif)
+    <img src="/doc/gifs/real-time-messaging.gif" alt="real-time-messaging" />
 </p>
 
 ## Contributing
