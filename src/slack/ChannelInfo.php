@@ -5,7 +5,7 @@ require '../BaseModel.php';
 /**
  * @author @thisismahabadi
  */
-class ChannelInfo extends BaseModel implements BaseInterface
+class ChannelInfo extends BaseModel
 {
 	/**
      * The Slack api url for getting channels info.
@@ -14,7 +14,13 @@ class ChannelInfo extends BaseModel implements BaseInterface
      */
 	public $url = 'https://slack.com/api/channels.info?';
 
-    /** @inheritdoc */
+    /**
+     * Preparing data for making request to Slack api.
+     *
+     * @param array|string|null $params
+	 * 
+	 * @return null|object
+     */
 	public function response($params = null): ?object
 	{
 		try {

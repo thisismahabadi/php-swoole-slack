@@ -5,7 +5,7 @@ require '../BaseModel.php';
 /**
  * @author @thisismahabadi
  */
-class SendMessage extends BaseModel implements BaseInterface
+class SendMessage extends BaseModel
 {
 	/**
      * The Slack api url for sending chat message.
@@ -14,7 +14,13 @@ class SendMessage extends BaseModel implements BaseInterface
      */
 	public $url = 'https://slack.com/api/chat.postMessage?';
 
-    /** @inheritdoc */
+    /**
+     * Preparing data for making request to Slack api.
+     *
+     * @param array|string|null $params
+	 * 
+	 * @return null|object
+     */
 	public function response($params = null): ?object
 	{
 		try {

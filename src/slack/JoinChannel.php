@@ -5,7 +5,7 @@ require '../BaseModel.php';
 /**
  * @author @thisismahabadi
  */
-class JoinChannel extends BaseModel implements BaseInterface
+class JoinChannel extends BaseModel
 {
 	/**
      * The Slack api url for joining to channels.
@@ -14,7 +14,13 @@ class JoinChannel extends BaseModel implements BaseInterface
      */
 	public $url = 'https://slack.com/api/channels.join?';
 
-    /** @inheritdoc */
+    /**
+     * Preparing data for making request to Slack api.
+     *
+     * @param array|string|null $params
+	 * 
+	 * @return null|object
+     */
 	public function response($params = null): ?object
 	{
 		try {
