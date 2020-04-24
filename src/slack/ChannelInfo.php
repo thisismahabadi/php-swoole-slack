@@ -18,6 +18,10 @@ class ChannelInfo extends BaseModel implements BaseInterface
 	public function response($params = null): ?object
 	{
 		try {
+			if (! $params) {
+				throw new Exception("Send channel as parameter.");
+			}
+
 			$params = '&channel=' . $params;
 
 			return $this->fetchData($this->url, $params);

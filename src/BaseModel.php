@@ -12,7 +12,7 @@ class BaseModel
      *
      * @var string
      */
-	public $token = 'xoxp-1082401724580-1069499576150-1073748549494-b046d968c4cc68bf7ed1bfb630acb157';
+	public $token = 'xoxp-1082401724580-1069499576150-1083393410611-b313db0f3e4618b4c31e036910dc0ddc';
 
     /**
      * Make a cURL request to Slack api.

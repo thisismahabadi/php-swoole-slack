@@ -18,6 +18,10 @@ class DeleteMessage extends BaseModel implements BaseInterface
 	public function response($params = null): ?object
 	{
 		try {
+			if (! $params['channel'] || ! $params['ts']) {
+				throw new Exception("Send channel and ts as parameters.");
+			}
+
 			$data = '&channel=' . $params['channel'];
 			$data .= '&ts=' . $params['ts'];
 

@@ -18,7 +18,7 @@ php -S localhost:8000
 
 or any ports you would like.
 
-and to use a real-time sending and replying to messages, try to open their sockets with these commands from root folder:
+and to use a real-time sending and replying to messages, be sure to open their sockets with these commands from root folder:
 
 ```bash
 php src/sockets/SendMessage.php

@@ -18,6 +18,10 @@ class ChannelMessages extends BaseModel implements BaseInterface
 	public function response($params = null): ?array
 	{
 		try {
+			if (! $params) {
+				throw new Exception("Send channel as parameter.");
+			}
+
 			$params = '&channel=' . $params;
 
 			return array_reverse($this->fetchData($this->url, $params)->messages);

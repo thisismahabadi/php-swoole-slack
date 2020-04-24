@@ -18,6 +18,10 @@ class JoinChannel extends BaseModel implements BaseInterface
 	public function response($params = null): ?object
 	{
 		try {
+			if (! $params) {
+				throw new Exception("Send name as parameter.");
+			}
+
 			$params = '&name=' . $params;
 
 			return $this->fetchData($this->url, $params);

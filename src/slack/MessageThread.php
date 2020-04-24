@@ -18,6 +18,10 @@ class MessageThread extends BaseModel implements BaseInterface
 	public function response($params = null): ?array
 	{
 		try {
+			if (! $params['channel'] || ! $params['thread']) {
+				throw new Exception("Send channel and thread as parameters.");
+			}
+
 			$data = '&channel=' . $params['channel'];
 			$data .= '&thread_ts=' . $params['thread'];
 
@@ -72,7 +76,7 @@ function getThread(): ?array
                             <td><?= $key->user ?? null ?></td>
                             <td><?= $key->text ?></td>
                             <td><?= '<a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
-                        </tr>
+						</tr>
                     <?php } ?>
                 </tbody>
             </table>
