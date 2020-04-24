@@ -12,7 +12,7 @@ class ChannelsList extends BaseModel
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.list?';
+	protected $url = 'https://slack.com/api/channels.list?';
 
     /**
      * Preparing data for making request to Slack api.
