@@ -23,7 +23,10 @@ and to use a real-time sending and replying to messages, be sure to open their s
 ```bash
 php src/sockets/SendMessage.php
 php src/sockets/ReplyMessage.php
+php src/sockets/DeleteMessage.php
 ```
+
+if you freaked out what is the reason to run these commands, you can also easily run them in [supervisor](http://supervisord.org/) without running each seprately by putting them in supervisor configuration.
 
 ## Provided Features
 

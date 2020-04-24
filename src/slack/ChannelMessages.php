@@ -73,7 +73,7 @@ function getMessages(): ?array
 				<tbody>
 					<?php foreach (getMessages() as $key) { ?>
 						<tr>
-							<td><?= $key->user ?? null ?></td>
+							<td><?= $key->user ?? $key->username ?></td>
 							<td><?= $key->text ?></td>
 							<td><?= '<a class="btn btn-danger"  target="_blank" href="DeleteMessage.php?channel=' . $_GET['channel'] . '&ts=' . $key->ts . '">Remove this message.</a>' ?></td>
 		                    <td><?= '<a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>
@@ -112,7 +112,7 @@ function getMessages(): ?array
 			console.log('There is a new message.');
 			$('tbody').append(
 				`<tr>
-					<td>${JSON.parse(event.data).message.user ?? ''}</td>
+					<td>${JSON.parse(event.data).message.user ?? JSON.parse(event.data).message.username}</td>
 					<td>${JSON.parse(event.data).message.text}</td>
 					<td><a class="btn btn-danger" target="_blank" href="DeleteMessage.php?channel=${JSON.parse(event.data).channel}&ts=${JSON.parse(event.data).ts}">Remove this message.</a></td>
 					<td><a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=${JSON.parse(event.data).channel}&thread=${JSON.parse(event.data).ts}">Reply to this message and create or continue thread.</a></td>
