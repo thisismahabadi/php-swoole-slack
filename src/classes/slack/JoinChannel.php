@@ -1,6 +1,6 @@
 <?php
 
-require '../BaseModel.php';
+require __DIR__ . '/../BaseModel.php';
 
 /**
  * @author @thisismahabadi
@@ -36,15 +36,3 @@ class JoinChannel extends BaseModel
 		}
 	}
 }
-
-function joinChannel()
-{
-	try {
-		$channelInfo = (new JoinChannel)->response($_GET['channelName']);
-		die(json_encode($channelInfo));
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
-joinChannel();

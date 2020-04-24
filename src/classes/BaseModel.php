@@ -1,7 +1,5 @@
 <?php
 
-require 'BaseInterface.php';
-
 /**
  * @author @thisismahabadi
  */
@@ -12,7 +10,7 @@ class BaseModel
      *
      * @var string
      */
-	public $token = 'xoxp-1082401724580-1069499576150-1083613134179-3eac592dc502ba7791bb2f7322eadefc';
+	public $token = 'xoxp-1082401724580-1069499576150-1083642132835-d0a01e27284f78106c9fd18871edcf2e';
 
     /**
      * Make a cURL request to Slack api.

@@ -1,6 +1,6 @@
 <?php
 
-require '../BaseModel.php';
+require __DIR__ . '/../BaseModel.php';
 
 /**
  * @author @thisismahabadi
@@ -38,15 +38,3 @@ class ReplyMessage extends BaseModel
 		}
 	}
 }
-
-function replyMessage()
-{
-	try {
-		$message = (new ReplyMessage)->response($_POST);
-		die(json_encode($message));
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
-replyMessage();

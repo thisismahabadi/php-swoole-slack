@@ -1,70 +1,32 @@
 <?php
+    require __DIR__ . '/../classes/slack/ChannelMessages.php';
 
-require '../BaseModel.php';
-
-/**
- * @author @thisismahabadi
- */
-class ChannelMessages extends BaseModel
-{
-	/**
-     * The Slack api url for getting conversations history.
-     *
-     * @var string
-     */
-	public $url = 'https://slack.com/api/conversations.history?';
-
-    /**
-     * Preparing data for making request to Slack api.
-     *
-     * @param array|string|null $params
-	 * 
-	 * @return null|array
-     */
-	public function response($params = null): ?array
-	{
-		try {
-			if (! $params) {
-				throw new Exception("Send channel as parameter.");
-			}
-
-			$params = '&channel=' . $params;
-
-			return array_reverse($this->fetchData($this->url, $params)->messages);
-		} catch (Exception $e) {
-			echo $e->getMessage(); die;
-		}
-	}
-}
-
-function getMessages(): ?array
-{
-	try {
-		return (new ChannelMessages)->response($_GET['channel']);
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
+    function getMessages(): ?array
+    {
+        try {
+            return (new ChannelMessages)->response($_GET['channel']);
+        } catch (Exception $e) {
+            echo $e->getMessage(); die;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Messages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Channel Messages</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
-
 	<div class="container">
 		<div class="row">
 			<a href="ChannelsList.php">&#8592; Back</a>
 		</div>
 	</div>
-
 	<hr />
-
 	<div class="container">
 		<div class="row">
 			<table class="table">
@@ -89,9 +51,7 @@ function getMessages(): ?array
 			</table>
 		</div>
 	</div>
-
 	<hr />
-
 	<div class="container">
 		<form>
 			<div class="row">
@@ -104,9 +64,7 @@ function getMessages(): ?array
 			</div>
 		</form>
 	</div>
-
 	<br />
-
 	<script>
 		sendWs = new WebSocket('ws:127.0.0.1:9502');
 		deleteWs = new WebSocket('ws:127.0.0.1:9504');
@@ -183,6 +141,5 @@ function getMessages(): ?array
 			});
 		});
 	</script>
-
 </body>
 </html>

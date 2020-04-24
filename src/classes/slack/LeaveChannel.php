@@ -1,18 +1,18 @@
 <?php
 
-require '../BaseModel.php';
+require __DIR__ . '/../BaseModel.php';
 
 /**
  * @author @thisismahabadi
  */
-class ChannelInfo extends BaseModel
+class LeaveChannel extends BaseModel
 {
 	/**
-     * The Slack api url for getting channels info.
+     * The Slack api url for leaving channels.
      *
      * @var string
      */
-	public $url = 'https://slack.com/api/channels.info?';
+	public $url = 'https://slack.com/api/channels.leave?';
 
     /**
      * Preparing data for making request to Slack api.
@@ -36,15 +36,3 @@ class ChannelInfo extends BaseModel
 		}
 	}
 }
-
-function getInfo()
-{
-	try {
-		$channelInfo = (new ChannelInfo)->response($_GET['channel']);
-		die(json_encode($channelInfo));
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
-getInfo();

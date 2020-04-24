@@ -1,52 +1,14 @@
 <?php
+    require __DIR__ . '/../classes/slack/MessageThread.php';
 
-require '../BaseModel.php';
-
-/**
- * @author @thisismahabadi
- */
-class MessageThread extends BaseModel
-{
-	/**
-     * The Slack api url for getting channels replies.
-     *
-     * @var string
-     */
-	public $url = 'https://slack.com/api/channels.replies?';
-
-    /**
-     * Preparing data for making request to Slack api.
-     *
-     * @param array|string|null $params
-	 * 
-	 * @return null|array
-     */
-	public function response($params = null): ?array
-	{
-		try {
-			if (! $params['channel'] || ! $params['thread']) {
-				throw new Exception("Send channel and thread as parameters.");
-			}
-
-			$data = '&channel=' . $params['channel'];
-			$data .= '&thread_ts=' . $params['thread'];
-
-			return $this->fetchData($this->url, $data)->messages;
-		} catch (Exception $e) {
-			echo $e->getMessage(); die;
-		}
-	}
-}
-
-function getThread(): ?array
-{
-	try {
-		return (new MessageThread)->response($_GET);
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
+    function getThread(): ?array
+    {
+        try {
+            return (new MessageThread)->response($_GET);
+        } catch (Exception $e) {
+            echo $e->getMessage(); die;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -57,15 +19,12 @@ function getThread(): ?array
 	<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
-
     <div class="container">
         <div class="row">
             <a href="ChannelMessages.php?channel=<?= $_GET['channel'] ?>">&#8592; Back</a>
         </div>
     </div>
-
     <hr />
-
     <div class="container">
         <div class="row">
             <table class="table">
@@ -88,9 +47,7 @@ function getThread(): ?array
             </table>
         </div>
     </div>
-
 	<hr />
-
 	<div class="container">
 		<form>
 			<div class="row">
@@ -103,9 +60,7 @@ function getThread(): ?array
 			</div>
 		</form>
 	</div>
-
 	<br />
-
 	<script>
 		replyWs = new WebSocket('ws:127.0.0.1:9503');
 		deleteWs = new WebSocket('ws:127.0.0.1:9504');
@@ -182,6 +137,5 @@ function getThread(): ?array
             });
 		});
 	</script>
-
 </body>
 </html>

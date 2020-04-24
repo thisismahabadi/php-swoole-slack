@@ -1,6 +1,6 @@
 <?php
 
-require '../BaseModel.php';
+require __DIR__ . '/../BaseModel.php';
 
 /**
  * @author @thisismahabadi
@@ -37,15 +37,3 @@ class DeleteMessage extends BaseModel
 		}
 	}
 }
-
-function deleteMessage()
-{
-	try {
-		$message = (new DeleteMessage)->response($_GET);
-		die(json_encode($message));
-	} catch (Exception $e) {
-		echo $e->getMessage(); die;
-	}
-}
-
-deleteMessage();
