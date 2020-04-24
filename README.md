@@ -51,7 +51,9 @@ if you freaked out what is the reason to run these commands, you can also easily
 
 - and also a gif that shows how real-time messaging is working
 
-![Gif](/doc/gifs/real-time-messaging.gif)
+<p align="center">
+    ![Gif](/doc/gifs/real-time-messaging.gif)
+</p>
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
