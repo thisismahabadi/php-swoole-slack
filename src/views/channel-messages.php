@@ -1,16 +1,3 @@
-<?php
-    require __DIR__ . '/../classes/slack/ChannelMessages.php';
-
-    function getMessages(): ?array
-    {
-        try {
-            return (new ChannelMessages)->response($_GET['channel']);
-        } catch (Exception $e) {
-            echo $e->getMessage(); die;
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +10,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<a href="ChannelsList.php">&#8592; Back</a>
+			<a href="/channels">&#8592; Back</a>
 		</div>
 	</div>
 	<hr />
@@ -39,12 +26,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach (getMessages() as $key) { ?>
+					<?php foreach ($params['channelMessages'] as $key) { ?>
 						<tr>
 							<td><?= $key->user ?? $key->username ?></td>
 							<td><?= $key->text ?></td>
 							<td><button class="btn btn-danger deleteMessage" data-ts="<?= $key->ts ?>">Remove this message.</button></td>
-		                    <td><?= '<a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>
+		                    <td><?= '<a class="btn btn-primary" target="_blank" href="/messages/thread?channel=' . $_GET['channel'] . '&thread=' . $key->ts . '">Reply to this message and create or continue thread.</a>' ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>
@@ -80,7 +67,7 @@
 					<td>${JSON.parse(event.data).message.user ?? JSON.parse(event.data).message.username}</td>
 					<td>${JSON.parse(event.data).message.text}</td>
 					<td><button class="btn btn-danger deleteMessage" data-ts="${JSON.parse(event.data).ts}">Remove this message.</button></td>
-					<td><a class="btn btn-primary" target="_blank" href="MessageThread.php?channel=${JSON.parse(event.data).channel}&thread=${JSON.parse(event.data).ts}">Reply to this message and create or continue thread.</a></td>
+					<td><a class="btn btn-primary" target="_blank" href="/messages/thread?channel=${JSON.parse(event.data).channel}&thread=${JSON.parse(event.data).ts}">Reply to this message and create or continue thread.</a></td>
 				</tr>`
 			);
 		}
@@ -98,7 +85,7 @@
 		$('#sendButton').click(function(e) {
 			e.preventDefault();
             $.ajax({
-                url: 'SendMessage.php',
+                url: '/messages/send',
                 data: {
 					channel: '<?= $_GET['channel'] ?>',
 					text: encodeURI($('#text').val())
@@ -121,7 +108,7 @@
 
 		$('tbody').on('click', '.deleteMessage', function(e) {
 			$.ajax({
-				url: 'DeleteMessage.php',
+				url: '/messages/delete',
 				data: {
 					channel: '<?= $_GET['channel'] ?>',
 					ts: $(this).data('ts')
