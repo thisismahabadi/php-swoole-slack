@@ -12,7 +12,7 @@ class Controller
      *
 	 * @return object
      */
-    public function model(string $model): object
+    public function setModel(string $model): object
     {
         require_once __DIR__ . '/../models/slack/' . $model . '.php';
         return new $model;
@@ -26,7 +26,7 @@ class Controller
      *
 	 * @return void
      */
-    public function view(string $view, array $params = []): void
+    public function setView(string $view, array $params = []): void
     {
         require_once __DIR__ . '/../views/' . $view . '.php';
     }
