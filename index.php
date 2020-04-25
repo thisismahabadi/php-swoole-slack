@@ -59,5 +59,5 @@ switch ($_SERVER['PATH_INFO'] ?? $_SERVER['REQUEST_URI']) {
 		break;
 
 	default:
-		echo 'Page not found';
+		echo 'Page not found.';
 }
