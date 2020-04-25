@@ -17,11 +17,11 @@ class ReplyMessage extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
-     * @param array|string|null $params
+     * @param array|null $params
 	 * 
 	 * @return null|object
      */
-	public function response($params = null): ?object
+	public function response(array $params = null): ?object
 	{
 		try {
 			if (! $params['channel'] || ! $params['text'] || ! $params['thread']) {

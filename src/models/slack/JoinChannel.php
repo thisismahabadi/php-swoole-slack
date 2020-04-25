@@ -17,11 +17,11 @@ class JoinChannel extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
-     * @param array|string|null $params
+     * @param string|null $params
 	 * 
 	 * @return null|object
      */
-	public function response($params = null): ?object
+	public function response(string $params = null): ?object
 	{
 		try {
 			if (! $params) {

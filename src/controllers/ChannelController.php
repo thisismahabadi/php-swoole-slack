@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * @author @thisismahabadi
+ */
 class ChannelController extends Controller
 {
+    /**
+     * Get the channels list.
+     *
+	 * @see src/models/slack/ChannelsList::response()
+     */
     public function getList()
     {
         try {
@@ -12,6 +20,11 @@ class ChannelController extends Controller
         }
     }
 
+    /**
+     * Get the channel's info.
+     *
+	 * @see src/models/slack/ChannelInfo::response(array|string|null $params)
+     */
     public function getInfo()
     {
         try {
@@ -22,7 +35,12 @@ class ChannelController extends Controller
         }
     }
 
-    public function getMessages(): ?array
+    /**
+     * Get the channel's messages.
+     *
+	 * @see src/models/slack/ChannelMessages::response(array|string|null $params)
+     */
+    public function getMessages()
     {
         try {
             $channelMessages = $this->model('ChannelMessages')->response($_GET['channel']);
@@ -32,7 +50,14 @@ class ChannelController extends Controller
         }
     }
 
-    public function joinChannel()
+    /**
+     * Join to a channel.
+     *
+	 * @see src/models/slack/JoinChannel::response(array|string|null $params)
+     *
+	 * @return void
+     */
+    public function joinChannel(): void
     {
         try {
             $channelInfo = $this->model('JoinChannel')->response($_GET['channelName']);
@@ -42,7 +67,14 @@ class ChannelController extends Controller
         }
     }
 
-    public function leaveChannel()
+    /**
+     * Leave from a channel.
+     *
+	 * @see src/models/slack/LeaveChannel::response(array|string|null $params)
+     *
+	 * @return void
+     */
+    public function leaveChannel(): void
     {
         try {
             $channelInfo = $this->model('LeaveChannel')->response($_GET['channel']);

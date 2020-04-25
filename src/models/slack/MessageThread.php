@@ -17,11 +17,11 @@ class MessageThread extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
-     * @param array|string|null $params
+     * @param array|null $params
 	 * 
 	 * @return null|array
      */
-	public function response($params = null): ?array
+	public function response(array $params = null): ?array
 	{
 		try {
 			if (! $params['channel'] || ! $params['thread']) {
