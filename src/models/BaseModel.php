@@ -10,11 +10,13 @@ class BaseModel
      *
      * @var string
      */
-	private $token = 'xoxp-1082401724580-1069499576150-1086112309971-c2bb8a247060272fadd31c0996bff28f';
+	private $token = 'xoxp-1082401724580-1069499576150-1079183799398-8c68aa74cf0168ccb96121741f45cf8f';
 
     /**
      * Make a cURL request to Slack api.
      *
+	 * @throws \Exception
+	 *
      * @param string $url
      * @param array|string|null $params
      *

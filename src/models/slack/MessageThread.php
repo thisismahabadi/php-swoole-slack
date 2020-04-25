@@ -17,6 +17,8 @@ class MessageThread extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
+	 * @throws \Exception
+	 *
      * @param array|null $params
 	 * 
 	 * @return null|array
