@@ -25,19 +25,19 @@ switch ($_SERVER['PATH_INFO'] ?? $_SERVER['REQUEST_URI']) {
 	case '/channels/leave':
 	case '/channels/leave/':
 		require_once __DIR__ . '/src/controllers/ChannelController.php';
-		return (new ChannelController)->leaveChannel();
+		return (new ChannelController)->leaveFrom();
 		break;
 
 	case '/channels/join':
 	case '/channels/join/':
 		require_once __DIR__ . '/src/controllers/ChannelController.php';
-		return (new ChannelController)->joinChannel();
+		return (new ChannelController)->joinTo();
 		break;
 
 	case '/messages/delete':
 	case '/messages/delete/':
 		require_once __DIR__ . '/src/controllers/MessageController.php';
-		return (new MessageController)->deleteMessage();
+		return (new MessageController)->delete();
 		break;
 
 	case '/messages/thread':
@@ -49,13 +49,13 @@ switch ($_SERVER['PATH_INFO'] ?? $_SERVER['REQUEST_URI']) {
 	case '/messages/reply':
 	case '/messages/reply/':
 		require_once __DIR__ . '/src/controllers/MessageController.php';
-		return (new MessageController)->replyMessage();
+		return (new MessageController)->reply();
 		break;
 
 	case '/messages/send':
 	case '/messages/send/':
 		require_once __DIR__ . '/src/controllers/MessageController.php';
-		return (new MessageController)->sendMessage();
+		return (new MessageController)->send();
 		break;
 
 	default:

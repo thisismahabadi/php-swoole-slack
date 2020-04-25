@@ -8,14 +8,14 @@ class MessageController extends Controller
     /**
      * Delete a message.
      *
-	 * @see src/models/slack/DeleteMessage::response(array|string|null $params)
+	 * @see src/models/slack/Message::delete(array|null $params)
      *
 	 * @return void
      */
-    public function deleteMessage(): void
+    public function delete(): void
     {
         try {
-            $message = $this->model('DeleteMessage')->response($_GET);
+            $message = $this->setModel('Message')->delete($_GET);
             die(json_encode($message));
         } catch (Exception $e) {
             echo $e->getMessage(); die;
@@ -25,29 +25,29 @@ class MessageController extends Controller
     /**
      * Get a thread.
      *
-	 * @see src/models/slack/MessageThread::response(array|string|null $params)
+	 * @see src/models/slack/Message::getThread(array|null $params)
      */
     public function getThread(): ?array
     {
         try {
-            $messageThread = $this->model('MessageThread')->response($_GET);
-            return $this->view('message-thread', ['messageThread' => $messageThread]);
+            $messageThread = $this->setModel('Message')->getThread($_GET);
+            return $this->setView('message-thread', ['messageThread' => $messageThread]);
         } catch (Exception $e) {
-            return $this->view('message-thread', ['error' => $e]);
+            return $this->setView('message-thread', ['error' => $e]);
         }
     }
 
     /**
      * Reply to a message.
      *
-	 * @see src/models/slack/ReplyMessage::response(array|string|null $params)
+	 * @see src/models/slack/Message::reply(array|null $params)
      *
 	 * @return void
      */
-    public function replyMessage(): void
+    public function reply(): void
     {
         try {
-            $message = $this->model('ReplyMessage')->response($_POST);
+            $message = $this->setModel('Message')->reply($_POST);
             die(json_encode($message));
         } catch (Exception $e) {
             echo $e->getMessage(); die;
@@ -57,14 +57,14 @@ class MessageController extends Controller
     /**
      * Send a message.
      *
-	 * @see src/models/slack/SendMessage::response(array|string|null $params)
+	 * @see src/models/slack/Message::send(array|null $params)
      *
 	 * @return void
      */
-    public function sendMessage(): void
+    public function send(): void
     {
         try {
-            $message = $this->model('SendMessage')->response($_POST);
+            $message = $this->setModel('Message')->send($_POST);
             die(json_encode($message));
         } catch (Exception $e) {
             echo $e->getMessage(); die;
