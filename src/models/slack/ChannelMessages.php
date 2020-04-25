@@ -32,7 +32,7 @@ class ChannelMessages extends BaseModel
 
 			return array_reverse($this->fetchData($this->url, $params)->messages);
 		} catch (Exception $e) {
-			echo $e->getMessage(); die;
+			throw new Exception($e);
 		}
 	}
 }

@@ -16,7 +16,7 @@ class ChannelController extends Controller
             $channels = $this->model('ChannelsList')->response();
             return $this->view('channels-list', ['channels' => $channels]);
         } catch (Exception $e) {
-            echo $e->getMessage(); die;
+            return $this->view('channels-list', ['error' => $e]);
         }
     }
 
@@ -31,7 +31,7 @@ class ChannelController extends Controller
             $channelInfo = $this->model('ChannelInfo')->response($_GET['channel']);
             return $this->view('channel-info', ['channelInfo' => $channelInfo]);
         } catch (Exception $e) {
-            echo $e->getMessage(); die;
+            return $this->view('channel-info', ['error' => $e]);
         }
     }
 
@@ -46,7 +46,7 @@ class ChannelController extends Controller
             $channelMessages = $this->model('ChannelMessages')->response($_GET['channel']);
             return $this->view('channel-messages', ['channelMessages' => $channelMessages]);
         } catch (Exception $e) {
-            echo $e->getMessage(); die;
+            return $this->view('channel-messages', ['error' => $e]);
         }
     }
 

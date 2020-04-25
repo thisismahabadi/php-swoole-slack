@@ -24,7 +24,7 @@ class ChannelsList extends BaseModel
 		try {
 			return $this->fetchData($this->url)->channels;
 		} catch (Exception $e) {
-			echo $e->getMessage(); die;
+			throw new Exception($e);
 		}
 	}
 }

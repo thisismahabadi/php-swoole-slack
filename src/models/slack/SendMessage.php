@@ -33,7 +33,7 @@ class SendMessage extends BaseModel
 
 			return $this->fetchData($this->url, $data);
 		} catch (Exception $e) {
-			echo $e->getMessage(); die;
+			throw new Exception($e);
 		}
 	}
 }
