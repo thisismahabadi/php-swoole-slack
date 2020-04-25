@@ -6,7 +6,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
-	<a style="color: red"><?= $params['error'] ?></a>
+    <a style="color: red"><?= isset($params['error']) ? $params['error'] : null ?></a>
     <div class="container">
         <div class="row">
             <a href="/channels/messages?channel=<?= $_GET['channel'] ?>">&#8592; Back</a>
@@ -24,13 +24,15 @@
                     </tr>
                 </thead>
                 <tbody>
-					<?php foreach ($params['messageThread'] as $key) { ?>
-                        <tr>
-                            <td><?= $key->user ?? $key->username ?></td>
-                            <td><?= $key->text ?></td>
-							<td><button class="btn btn-danger deleteMessage" data-ts="<?= $key->ts ?>">Remove this message.</button></td>
-						</tr>
-                    <?php } ?>
+					<?php if (isset($params['messageThread'])) {
+						foreach ($params['messageThread'] as $key) { ?>
+							<tr>
+								<td><?= $key->user ?? $key->username ?></td>
+								<td><?= $key->text ?></td>
+								<td><button class="btn btn-danger deleteMessage" data-ts="<?= $key->ts ?>">Remove this message.</button></td>
+							</tr>
+						<?php }
+                    } ?>
                 </tbody>
             </table>
         </div>

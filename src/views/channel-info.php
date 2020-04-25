@@ -6,8 +6,8 @@
     <title>Channel Info</title>
 </head>
 <body>
-    <a style="color: red"><?= $params['error'] ?></a>
+    <a style="color: red"><?= isset($params['error']) ? $params['error'] : null ?></a>
     <p>You can loop on the data and show whatever you want.</p>
-    <?php print_r($params['channelInfo']) ?>
+    <?php print_r(isset($params['channelInfo']) ? $params['channelInfo'] : null) ?>
 </body>
 </html>
