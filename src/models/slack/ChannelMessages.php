@@ -17,11 +17,11 @@ class ChannelMessages extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
-     * @param array|string|null $params
+     * @param string|null $params
 	 * 
 	 * @return null|array
      */
-	public function response($params = null): ?array
+	public function response(string $params = null): ?array
 	{
 		try {
 			if (! $params) {

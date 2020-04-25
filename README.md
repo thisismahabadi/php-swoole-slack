@@ -30,7 +30,7 @@ If you freaked out why you should to run all of these commands, you can also eas
 
 The responses are API like and here the views are seprated and also you can use it in your usecases or you can extend it with your own codes.
 
-Also the project is MVC like and as you could see the layers are seprated into model, view and controller logics located in `src`.
+Also the project is MVC like and as you can see the layers are seprated into model, view and controller logics located in `src`.
 
 ## Provided Features and Routes
 

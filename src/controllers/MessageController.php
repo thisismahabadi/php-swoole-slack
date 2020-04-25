@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * @author @thisismahabadi
+ */
 class MessageController extends Controller
 {
-    public function deleteMessage()
+    /**
+     * Delete a message.
+     *
+	 * @see src/models/slack/DeleteMessage::response(array|string|null $params)
+     *
+	 * @return void
+     */
+    public function deleteMessage(): void
     {
         try {
             $message = $this->model('DeleteMessage')->response($_GET);
@@ -12,6 +22,11 @@ class MessageController extends Controller
         }
     }
 
+    /**
+     * Get a thread.
+     *
+	 * @see src/models/slack/MessageThread::response(array|string|null $params)
+     */
     public function getThread(): ?array
     {
         try {
@@ -22,7 +37,14 @@ class MessageController extends Controller
         }
     }
 
-    public function replyMessage()
+    /**
+     * Reply to a message.
+     *
+	 * @see src/models/slack/ReplyMessage::response(array|string|null $params)
+     *
+	 * @return void
+     */
+    public function replyMessage(): void
     {
         try {
             $message = $this->model('ReplyMessage')->response($_POST);
@@ -32,7 +54,14 @@ class MessageController extends Controller
         }
     }
 
-    public function sendMessage()
+    /**
+     * Send a message.
+     *
+	 * @see src/models/slack/SendMessage::response(array|string|null $params)
+     *
+	 * @return void
+     */
+    public function sendMessage(): void
     {
         try {
             $message = $this->model('SendMessage')->response($_POST);

@@ -17,11 +17,9 @@ class ChannelsList extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
-     * @param array|string|null $params
-	 * 
 	 * @return null|array
      */
-	public function response($params = null): ?array
+	public function response(): ?array
 	{
 		try {
 			return $this->fetchData($this->url)->channels;
