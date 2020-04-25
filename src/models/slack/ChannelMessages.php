@@ -17,6 +17,8 @@ class ChannelMessages extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
+	 * @throws \Exception
+	 *
      * @param string|null $params
 	 * 
 	 * @return null|array

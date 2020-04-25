@@ -17,6 +17,8 @@ class ChannelsList extends BaseModel
     /**
      * Preparing data for making request to Slack api.
      *
+	 * @throws \Exception
+	 *
 	 * @return null|array
      */
 	public function response(): ?array
