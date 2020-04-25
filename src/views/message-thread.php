@@ -1,16 +1,3 @@
-<?php
-    require __DIR__ . '/../classes/slack/MessageThread.php';
-
-    function getThread(): ?array
-    {
-        try {
-            return (new MessageThread)->response($_GET);
-        } catch (Exception $e) {
-            echo $e->getMessage(); die;
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +8,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <a href="ChannelMessages.php?channel=<?= $_GET['channel'] ?>">&#8592; Back</a>
+            <a href="/channels/messages?channel=<?= $_GET['channel'] ?>">&#8592; Back</a>
         </div>
     </div>
     <hr />
@@ -36,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-					<?php foreach (getThread() as $key) { ?>
+					<?php foreach ($params['messageThread'] as $key) { ?>
                         <tr>
                             <td><?= $key->user ?? $key->username ?></td>
                             <td><?= $key->text ?></td>
@@ -93,7 +80,7 @@
 		$('#replyMessage').click(function(e) {
 			e.preventDefault();
             $.ajax({
-                url: 'ReplyMessage.php',
+                url: '/messages/reply',
                 data: {
 					channel: '<?= $_GET['channel'] ?>',
 					text: encodeURI($('#text').val()),
@@ -117,7 +104,7 @@
 
 		$('tbody').on('click', '.deleteMessage', function(e) {
             $.ajax({
-                url: 'DeleteMessage.php',
+                url: '/messages/delete',
                 data: {
 					channel: '<?= $_GET['channel'] ?>',
                     ts: $(this).data('ts')
