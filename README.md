@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a simple application to interact with Slack which is written in PHP and using Swoole framework.
+This is a simple mvc application to interact with Slack which is written in PHP and using Swoole framework.
 
 ## Please Note
 
