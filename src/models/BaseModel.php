@@ -10,7 +10,7 @@ class BaseModel
      *
      * @var string
      */
-	private $token = 'xoxp-1082401724580-1069499576150-1085889559858-a13a941df1f8665b1ec727abba037f46';
+	private $token = 'xoxp-1082401724580-1069499576150-1086112309971-c2bb8a247060272fadd31c0996bff28f';
 
     /**
      * Make a cURL request to Slack api.
@@ -33,7 +33,7 @@ class BaseModel
 
 			return json_decode($data);
 		} catch (Exception $e) {
-			echo $e->getMessage(); die;
+			throw new Exception($e);
 		}
 	}
 }

@@ -33,7 +33,7 @@ class MessageController extends Controller
             $messageThread = $this->model('MessageThread')->response($_GET);
             return $this->view('message-thread', ['messageThread' => $messageThread]);
         } catch (Exception $e) {
-            echo $e->getMessage(); die;
+            return $this->view('message-thread', ['error' => $e]);
         }
     }
 
