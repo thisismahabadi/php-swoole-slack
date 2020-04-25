@@ -59,11 +59,12 @@
 
 		replyWs.onmessage = function(event) {
 			console.log('There is a new reply.');
+			const data = JSON.parse(event.data);
 			$('tbody').append(
 				`<tr>
-					<td>${JSON.parse(event.data).message.user ?? JSON.parse(event.data).message.username}</td>
-					<td>${JSON.parse(event.data).message.text}</td>
-					<td><button class="btn btn-danger deleteMessage" data-ts="${JSON.parse(event.data).ts}">Remove this message.</button></td>
+					<td>${data.message.user ?? data.message.username}</td>
+					<td>${data.message.text}</td>
+					<td><button class="btn btn-danger deleteMessage" data-ts="${data.ts}">Remove this message.</button></td>
 				</tr>`
 			);
 		}
