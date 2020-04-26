@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 /**
  * @author @thisismahabadi
  */
@@ -10,7 +12,7 @@ class BaseModel
      *
      * @var string
      */
-	private $token = 'xoxp-1082401724580-1069499576150-1079183799398-8c68aa74cf0168ccb96121741f45cf8f';
+	private $token = 'xoxp-1082401724580-1069499576150-1084560475413-0074349f44d2bfa968dea8f606f7c152';
 
     /**
      * Make a cURL request to Slack api.

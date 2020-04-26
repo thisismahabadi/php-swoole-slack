@@ -8,7 +8,7 @@ Make sure that you've already installed swoole. you can use [this link](https://
 
 ## Usage
 
-In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src/models` folder.
+In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src/Models` folder.
 
 and then you can run it in root folder by php built-in web server like this:
 
@@ -21,9 +21,9 @@ or any ports you would like.
 and to use a real-time sending and replying to messages, be sure to open their sockets with these commands from root folder:
 
 ```bash
-php src/sockets/SendMessage.php
-php src/sockets/ReplyMessage.php
-php src/sockets/DeleteMessage.php
+php src/Sockets/SendMessage.php
+php src/Sockets/ReplyMessage.php
+php src/Sockets/DeleteMessage.php
 ```
 
 If you freaked out why you should to run all of these commands, you can also easily run them in [supervisor](http://supervisord.org/) without running each seprately by putting them in supervisor configuration.

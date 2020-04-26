@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Core\Controller;
+use App\Models\Slack\Message;
+
 /**
  * @author @thisismahabadi
  */
@@ -8,14 +13,14 @@ class MessageController extends Controller
     /**
      * Delete a message.
      *
-	 * @see src/models/slack/Message::delete(array|null $params)
+	 * @see src/Models/Slack/Message::delete(array|null $params)
      *
 	 * @return void
      */
     public function delete(): void
     {
         try {
-            $message = $this->setModel('Message')->delete($_GET);
+            $message = (new Message)->delete($_GET);
             die(json_encode($message));
         } catch (Exception $e) {
             echo $e->getMessage(); die;
@@ -25,12 +30,12 @@ class MessageController extends Controller
     /**
      * Get a thread.
      *
-	 * @see src/models/slack/Message::getThread(array|null $params)
+	 * @see src/Models/Slack/Message::getThread(array|null $params)
      */
     public function getThread(): ?array
     {
         try {
-            $messageThread = $this->setModel('Message')->getThread($_GET);
+            $messageThread = (new Message)->getThread($_GET);
             return $this->setView('message-thread', ['messageThread' => $messageThread]);
         } catch (Exception $e) {
             return $this->setView('message-thread', ['error' => $e]);
@@ -40,14 +45,14 @@ class MessageController extends Controller
     /**
      * Reply to a message.
      *
-	 * @see src/models/slack/Message::reply(array|null $params)
+	 * @see src/Models/Slack/Message::reply(array|null $params)
      *
 	 * @return void
      */
     public function reply(): void
     {
         try {
-            $message = $this->setModel('Message')->reply($_POST);
+            $message = (new Message)->reply($_POST);
             die(json_encode($message));
         } catch (Exception $e) {
             echo $e->getMessage(); die;
@@ -57,14 +62,14 @@ class MessageController extends Controller
     /**
      * Send a message.
      *
-	 * @see src/models/slack/Message::send(array|null $params)
+	 * @see src/Models/Slack/Message::send(array|null $params)
      *
 	 * @return void
      */
     public function send(): void
     {
         try {
-            $message = $this->setModel('Message')->send($_POST);
+            $message = (new Message)->send($_POST);
             die(json_encode($message));
         } catch (Exception $e) {
             echo $e->getMessage(); die;
