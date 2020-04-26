@@ -1,14 +1,14 @@
 ## Introduction
 
-This is a simple mvc application to interact with Slack which is written in PHP and using Swoole framework.
+This is a simple MVC application to interact with Slack which is written in PHP and using Swoole framework.
 
 ## Please Note
 
-Make sure that you've already installed swoole. you can use [this link](https://www.swoole.co.uk/) to do it.
+Make sure that you've already installed Swoole. you can use [this link](https://www.swoole.co.uk/) to do it.
 
 ## Usage
 
-In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src/Models` folder.
+To run it, at first you need to change the token property with yours in the file `BaseModel.php` located in the `src/Models` folder.
 
 Then try to `Dumps the autoloader` by just __one__ of the following commands:
 
@@ -20,9 +20,9 @@ or
 composer install
 ```
 
-Also make sure composer has already installed otherwise check [this link](https://getcomposer.org/).
+Also, make sure Composer has already installed otherwise check [this link](https://getcomposer.org/).
 
-and then you can run it in root folder by php built-in web server like this:
+and then you can run it in the root folder by PHP built-in web server like this:
 
 ```bash
 php -S localhost:8000
@@ -38,11 +38,11 @@ php src/Sockets/ReplyMessage.php
 php src/Sockets/DeleteMessage.php
 ```
 
-If you freaked out why you should to run all of these commands, you can also easily run them in [supervisor](http://supervisord.org/) without running each seprately by putting them in supervisor configuration.
+If you freaked out why you should run all of these commands, you can also easily run them in [supervisor](http://supervisord.org/) without running each separately by putting them in supervisor configuration.
 
-The responses are API like and here the views are seprated and also you can use it in your usecases or you can extend it with your own codes.
+The responses are API like and here the views are separated and also you can use it in your use cases or you can extend it with your codes.
 
-Also the project is MVC like and as you can see the layers are seprated into model, view and controller logics located in `src`.
+Also, the project is MVC like and as you can see the layers are separated into model, view, and controller logics located in `src`.
 
 ## Provided Features and Routes
 
@@ -109,4 +109,4 @@ Also the project is MVC like and as you can see the layers are seprated into mod
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+Please make sure to update the tests as appropriate.
