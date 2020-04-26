@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../BaseModel.php';
+namespace App\Models\Slack;
+
+use App\Models\BaseModel;
 
 /**
  * @author @thisismahabadi
