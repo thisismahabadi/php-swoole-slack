@@ -10,7 +10,7 @@ Make sure that you've already installed swoole. you can use [this link](https://
 
 In order to run it, at the first you need to change the token property with yours in the file `BaseModel.php` located in `src/Models` folder.
 
-Then try to `Dumps the autoloader` by just __one__ of the followinig commands:
+Then try to `Dumps the autoloader` by just __one__ of the following commands:
 
 ```bash
 composer dump-autoload
